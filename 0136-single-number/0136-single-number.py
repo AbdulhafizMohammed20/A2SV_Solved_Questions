@@ -1,8 +1,8 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        
-        dict_nums = Counter(nums)
+        hash_map = Counter(nums)
 
-        for key,val in dict_nums.items():
-            if val == 1:
+        for key in hash_map :
+
+            if hash_map[key] == 1:
                 return key
