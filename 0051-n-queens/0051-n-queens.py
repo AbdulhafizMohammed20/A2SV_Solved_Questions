@@ -2,25 +2,25 @@
 class Solution:
     def solveNQueens(self, n: int):
         cols = [False] * n
-        posDiag = [False] * (2*n - 1) # r - c
-        negDiag = [False] * (2*n - 1) # r + c
+        posDiag = [False] * (2*n - 1) 
+        negDiag = [False] * (2*n - 1) 
         
         board = [["."] * n for _ in range(n)]
         result = []
         
         def backtrack(r):
-            # basecase
+           
             if r == n:
-               # what if the current version of board does not hold all queen.  
+               
                 result.append(["".join(row) for row in board])
                 return     
             
-            # operation 
+         
             for c in range(n):
                 posD = r - c
                 negD = r + c
                 
-                if cols[c] or posDiag[posD] or negDiag[negD]: # ignore cell
+                if cols[c] or posDiag[posD] or negDiag[negD]: 
                     continue
                  
                 cols[c] = posDiag[posD] = negDiag[negD] = True
@@ -32,7 +32,7 @@ class Solution:
                 board[r][c] = "."
                 
         backtrack(0)
-        return result # time = O(n^n) and space = O(n*n)
+        return result 
                 
                 
                 
