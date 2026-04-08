@@ -1,20 +1,24 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
-        dict_nums = Counter(nums)
-        result = []
-
-        for key, val in dict_nums.items():
-            result.append([val,key])
-
-        result.sort()
-
-        result = result[::-1]
+        n = len(set(nums))
+        buckets = []
+        for i in range(n) :
+            buckets.append([])
 
         ans = []
+        hash_map = Counter(nums)
 
-        for list_num in result :
-            if len(ans) < k:
-                ans.append(list_num[-1])  
+        for key, val in hash_map.items():
+            buckets.append([val,key])
         
+        buckets.sort()
+        buckets = buckets[::-1]
+
+        for i in range(k):
+            ans.append(buckets[i][1])
+
         return ans
+
+
+       
